@@ -3,7 +3,6 @@ import os
 import requests
 from dotenv import load_dotenv
 
-
 class FootballDataClient:
     BASE_URL = 'https://v3.football.api-sports.io'
 
