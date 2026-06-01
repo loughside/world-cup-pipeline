@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-API_URL = 'https://v3.football.api-sports.io'
-API_KEY = os.getenv("API_FOOTBALL_KEY")
+API_URL = 'https://v3.football.api-sports.io/status'
+API_KEY = os.getenv("FOOTBALL_DATA_API_KEY")
 
 # x-apisports-key is the required auth header for api-football.com
 headers = {
@@ -18,10 +18,10 @@ headers = {
 
 try:
     # Status endpoint confirms the key is valid and shows remaining daily quota
-    response = requests.get(API_URL+'/odds/live?season=2022&league=1', headers=headers)
+    response = requests.get(API_URL, headers=headers)
 
     # 'account' contains plan type, requests used today, and requests remaining
-    result = response.json()
+    result = response.json()['response']['account']
     print(result)
 
 except Exception as e:
